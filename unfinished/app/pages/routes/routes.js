@@ -27,8 +27,8 @@ const Routes = () => {
     });
 
     useEffect(() => {
-        setUser(UserExample)
-        
+        // setUser(UserExample)
+
         if (loaded || error) {
             SplashScreen.hideAsync();
         }
