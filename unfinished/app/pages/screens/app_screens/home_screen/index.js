@@ -8,20 +8,22 @@ const Container = styled.View`
     flex: 1;
     background-color: #000000;
     padding: 16px; 
-    padding-top: 65px;
+`;
+
+const Spacer = styled.View`
+    height: ${props=>props.height && props.height};
 `;
 
 const TopBar = styled.View`
     flex-direction: row; 
     justify-content: space-between;
     align-items: center; 
-    margin-bottom: 20px;
 `;
 
 const Title = styled.Text`
     font-family: InriaSerif-Bold;
     color: #FFFFFF;
-    font-size: 24px;
+    font-size: 32px;
 `;
 
 const MedText = styled.Text`
@@ -32,22 +34,19 @@ const MedText = styled.Text`
 `;
 
 const MedSmallText = styled.Text`
-    font-family: InriaSerif-Bold;
     color: #FFFFFF;
-    font-size: 15px;
+    font-size: 18px;
     margin-bottom: 2px;
 `;
 
 const SmallText = styled.Text`
-    font-family: InriaSerif-Bold;
-    color: #FFFFFF;
+    color: #FFFFFF90;
     font-size: 12px;
 `;
 
 const AffirmationSec = styled.View`
-    margin-top: 40px; 
-    align-items: flex-start; 
-    padding-left: 16px; 
+    align-items: flex-start;
+    padding: 12px;
 `;
 
 const StyleLine = styled.View`
@@ -82,13 +81,13 @@ const AppBtn = styled.TouchableOpacity`
 `;
 
 const AppBtnText = styled.Text`
-  font-family: InriaSerif-Bold;
-  color: #FFFFFF;
   font-size: 18px;
 `;
 
 const IconTextWrapper = styled.View`
     flex-direction: row;
+    align-items: center;
+    
 `;
 
 
@@ -99,10 +98,12 @@ const HomeScreen = ({ navigation }) => {
     return (
         <>
             <Container>
+                <Spacer height={"100px"}></Spacer>
                 <TopBar>
-                    <Title>Hello, {user ? user.name : "Guest"}</Title>
+                    <Title>Hello, {user ? user.fullName.split(" ")[0] : "Guest"}</Title>
                     <MaterialIcons name="settings" size={24} color="#FFFFFF" />
                 </TopBar>
+                <Spacer height={"30px"}></Spacer>
                 <AffirmationSec>
                     <MedText>Healing is a Spectrum</MedText>
                     <SmallText>Tap for more...</SmallText>
@@ -111,21 +112,19 @@ const HomeScreen = ({ navigation }) => {
                 <MedText>Chat</MedText>
                 <MakeNewChatBox>
                     <IconTextWrapper>
-                        <MaterialIcons name="chat-bubble" size={32} color="white" />
+                        <MaterialIcons name="chat-bubble" size={26} color="white" />
                         <TextContainer>
                             <MedSmallText>Your Personal Assistant</MedSmallText>
                             <SmallText>Start a chat with me.</SmallText>
                         </TextContainer>
                     </IconTextWrapper>
+                    <Spacer height={"10px"}></Spacer>
                     <AppBtn onPress={() => {
                         navigation.navigate("Chat");
                     }}>
-                        <AppBtnText>Start a Chat;</AppBtnText>
+                        <AppBtnText>Start a Chat</AppBtnText>
                     </AppBtn>
                 </MakeNewChatBox>
-                    <Button title="Logout" onPress={() => {
-                        setUser(null)
-                    }}></Button>
             </Container>
         </>
     )
