@@ -100,7 +100,7 @@ const ChatScreen = () => {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Bearer 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`,
+                "Authorization": `Bearer `,
             },
             body: JSON.stringify({
                 model: "gpt-4o",
