@@ -32,7 +32,22 @@
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }
+      ],
+      [
+        "expo-font",
+        {
+          "fonts": 
+          [
+            "./assets/fonts/InriaSerif-Bold.ttf", 
+            "./assets/fonts/InriaSerif-BoldItalic.ttf", 
+            "./assets/fonts/InriaSerif-Italic.ttf", 
+            "./assets/fonts/InriaSerif-Light.ttf", 
+            "./assets/fonts/InriaSerif-LightItalic.ttf", 
+            "./assets/fonts/InriaSerif-Regular.ttf"
+          ]
+        }
       ]
+      
     ],
     "experiments": {
       "typedRoutes": true

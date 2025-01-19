@@ -15,7 +15,8 @@ const ContextProvider = ({ children }) => {
         <Context.Provider
             value={{
                 user,
-                setUser
+                setUser,
+                navigation
             }}
         >
             {children}
