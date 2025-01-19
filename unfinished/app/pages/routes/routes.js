@@ -5,6 +5,7 @@ import { StatusBar, Text } from "react-native"
 import { Context } from "../../../helpers/context/context";
 import AuthRoutes from "./auth_routes/main_routes";
 import AppRoutes from "./app_routes/main_routes";
+import { UserExample } from "../../../constants/user";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -26,6 +27,8 @@ const Routes = () => {
     });
 
     useEffect(() => {
+        setUser(UserExample)
+        
         if (loaded || error) {
             SplashScreen.hideAsync();
         }
