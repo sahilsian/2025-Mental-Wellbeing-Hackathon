@@ -1,6 +1,7 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { KeyboardAvoidingView, Platform, ScrollView } from "react-native";
 import styled from "styled-components/native";
+import { Context } from "../../../../../helpers/context/context";
 
 const Container = styled.View`
     flex: 1;
@@ -88,6 +89,8 @@ const ChatScreen = () => {
     const [isChatClicked, setIsChatClicked] = useState(false);
     const [chat, onChangeChat] = useState("")
 
+    const { user } = useContext(Context)
+
     const [chatLog, setChatLog] = useState([])
 
     const scrollViewRef = useRef(null);
@@ -97,7 +100,7 @@ const ChatScreen = () => {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Bearer `,
+                "Authorization": `Bearer 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`,
             },
             body: JSON.stringify({
                 model: "gpt-4o",
@@ -115,11 +118,29 @@ const ChatScreen = () => {
     };
 
     const handleSendChat = async () => {
+        let chatToSend = chat;
+
+        if(chatLog.length == 0) {
+            let message = `
+                The user that is chatting to you has sent this message: ${chatToSend}
+
+                The user is also experiencing physical symptoms: ${user.physicalSymptoms}.
+
+                The user is also experiecing emotional symptoms: ${user.emotionalSymptoms}
+
+                The user is also experiencing this description: ${user.description}
+
+                the users date of birth is ${user.dateOfBirth}
+
+            `
+
+            chatToSend = message;
+        }
         setIsChatClicked(true)
         onChangeChat("")
         setChatLog((prevChats) => [...prevChats, {user: chat}])
 
-        const response = await sendTextRequest(chat);
+        const response = await sendTextRequest(chatToSend);
 
         setChatLog((prevChats) => [...prevChats, {AI: response.content}])
         setIsChatClicked(false)

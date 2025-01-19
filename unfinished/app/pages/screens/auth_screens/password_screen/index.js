@@ -96,6 +96,7 @@ const PasswordScreen = ({ navigation, route }) => {
                                 value={password}
                                 placeholder={"Enter your password"}
                                 placeholderTextColor={"#00000090"}
+                                secureTextEntry={true}
                             />
                             <Spacer height={"10px"} />
                             <EmailInput
@@ -103,6 +104,7 @@ const PasswordScreen = ({ navigation, route }) => {
                                 value={passwordConfirm}
                                 placeholder={"Confirm password"}
                                 placeholderTextColor={"#00000090"}
+                                secureTextEntry={true}
                             />
                             <Spacer height={"20px"} />
                             <Button
