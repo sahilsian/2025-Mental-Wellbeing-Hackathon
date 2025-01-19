@@ -5,6 +5,7 @@ import { StatusBar, Text } from "react-native"
 import { Context } from "../../../helpers/context/context";
 import AuthRoutes from "./auth_routes/main_routes";
 import AppRoutes from "./app_routes/main_routes";
+import { UserExample } from "../../../constants/user";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -12,7 +13,8 @@ SplashScreen.preventAutoHideAsync();
 const Routes = () => {
     const [loading, setLoading] = useState(false);
     const {
-        user
+        user,
+        setUser
     } = useContext(Context);
 
     const [loaded, error] = useFonts({
@@ -25,6 +27,8 @@ const Routes = () => {
     });
 
     useEffect(() => {
+        setUser(UserExample)
+        
         if (loaded || error) {
             SplashScreen.hideAsync();
         }
