@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { StatusBar, Text } from "react-native"
 import { Context } from "../../../helpers/context/context";
 import AuthRoutes from "./auth_routes/main_routes";
+import AppRoutes from "./app_routes/main_routes";
 
 const Routes = () => {
     const [loading, setLoading] = useState(true);
@@ -22,12 +23,12 @@ const Routes = () => {
     return (
         <>
             <StatusBar>
-                {user ?
-                    <Text>USER!</Text>
+            </StatusBar>
+                {!!user ?
+                    <AppRoutes></AppRoutes>
                 :
                     <AuthRoutes></AuthRoutes>
                 }
-            </StatusBar>
         </>
     )
 }
