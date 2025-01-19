@@ -12,7 +12,8 @@ SplashScreen.preventAutoHideAsync();
 const Routes = () => {
     const [loading, setLoading] = useState(false);
     const {
-        user
+        user,
+        setUser
     } = useContext(Context);
 
     const [loaded, error] = useFonts({
