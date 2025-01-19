@@ -11,7 +11,7 @@ const Provider = () => {
     return (
         <SafeAreaProvider>
             <QueryClientProvider client={queryClient}>
-                <NavigationContainer >
+                <NavigationContainer>
                     <ContextProvider>
                         <Routes></Routes>
                     </ContextProvider>
